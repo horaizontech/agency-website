@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horaizon Tech — AI Automation for Businesses</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",sans-serif;
+  background:#f5f5f7;
+  color:#1d1d1f;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+  overflow-x:hidden;
+}
+
+/* ===== Layout Rhythm ===== */
+section{
+  padding:160px 60px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .9s cubic-bezier(.4,0,.2,1);
+}
+section.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ===== Glass Navigation ===== */
+.nav{
+  position:fixed;
+  width:100%;
+  top:0;
+  z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 60px;
+  backdrop-filter:saturate(180%) blur(20px);
+  background:rgba(255,255,255,.8);
+  border-bottom:1px solid rgba(0,0,0,.05);
+}
+
+.logo{
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:-.3px;
+}
+
+.nav-cta{
+  background:#0071e3;
+  color:#fff;
+  padding:10px 22px;
+  border-radius:999px;
+  text-decoration:none;
+  font-weight:500;
+  font-size:14px;
+  transition:all .25s ease;
+}
+.nav-cta:hover{
+  background:#005bb5;
+  transform:translateY(-2px);
+}
+
+/* ===== Hero ===== */
+.hero{
+  padding-top:220px;
+  text-align:center;
+  max-width:980px;
+  margin:0 auto;
+  position:relative;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  top:-250px;
+  left:50%;
+  transform:translateX(-50%);
+  width:900px;
+  height:900px;
+  background:radial-gradient(circle at center,rgba(0,113,227,.12),transparent 65%);
+  animation:glow 8s ease-in-out infinite alternate;
+  z-index:-1;
+}
+
+@keyframes glow{
+  from{transform:translateX(-50%) scale(1)}
+  to{transform:translateX(-50%) scale(1.05)}
+}
+
+.hero h1{
+  font-size:clamp(44px,6vw,78px);
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom:32px;
+}
+
+.hero h1 span{color:#0071e3}
+
+.hero p{
+  font-size:22px;
+  color:#6e6e73;
+  max-width:720px;
+  margin:0 auto 60px;
+  line-height:1.6;
+}
+
+/* ===== Buttons ===== */
+.cta-btn{
+  display:inline-block;
+  background:#0071e3;
+  color:#fff;
+  padding:16px 40px;
+  border-radius:999px;
+  font-size:17px;
+  font-weight:500;
+  text-decoration:none;
+  margin:0 10px;
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+.cta-btn:hover{
+  background:#005bb5;
+  transform:translateY(-3px);
+  box-shadow:0 20px 40px rgba(0,113,227,.25);
+}
+
+.cta-secondary{
+  display:inline-block;
+  border:1px solid #d2d2d7;
+  color:#1d1d1f;
+  padding:16px 40px;
+  border-radius:999px;
+  font-size:17px;
+  font-weight:500;
+  text-decoration:none;
+  margin:0 10px;
+  transition:all .25s ease;
+}
+.cta-secondary:hover{
+  background:#e8e8ed;
+}
+
+/* ===== Services ===== */
+.services{
+  max-width:1150px;
+  margin:0 auto;
+}
+
+.services h2{
+  text-align:center;
+  font-size:44px;
+  font-weight:700;
+  letter-spacing:-1px;
+  margin-bottom:90px;
+}
+
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:48px;
+}
+
+.service-card{
+  background:#ffffff;
+  border-radius:30px;
+  padding:56px 44px;
+  box-shadow:0 30px 60px rgba(0,0,0,.05);
+  transition:all .35s cubic-bezier(.4,0,.2,1);
+}
+
+.service-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 40px 80px rgba(0,0,0,.08);
+}
+
+.service-card h3{
+  font-size:20px;
+  font-weight:600;
+  margin-bottom:18px;
+}
+
+.service-card p{
+  font-size:16px;
+  color:#6e6e73;
+  margin-bottom:24px;
+  line-height:1.7;
+}
+
+.price{
+  font-size:28px;
+  font-weight:600;
+  color:#0071e3;
+}
+
+/* ===== Trust Section ===== */
+.trust{
+  background:#ffffff;
+  border-top:1px solid #e5e5e7;
+  border-bottom:1px solid #e5e5e7;
+  text-align:center;
+}
+
+.trust h2{
+  font-size:38px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.trust p{
+  font-size:19px;
+  color:#6e6e73;
+  max-width:720px;
+  margin:0 auto 50px;
+}
+
+/* ===== Book Section ===== */
+.book{
+  text-align:center;
+  max-width:820px;
+  margin:0 auto;
+}
+
+.book h2{
+  font-size:48px;
+  font-weight:700;
+  margin-bottom:22px;
+  letter-spacing:-1px;
+}
+
+.book p{
+  font-size:19px;
+  color:#6e6e73;
+  margin-bottom:50px;
+}
+
+/* ===== Footer ===== */
+.footer{
+  padding:60px;
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  color:#86868b;
+  border-top:1px solid #e5e5e7;
+  background:#f5f5f7;
+}
+
+/* ===== Responsive ===== */
+@media(max-width:900px){
+  .service-grid{grid-template-columns:1fr}
+  section{padding:120px 24px}
+  .nav{padding:20px 24px}
+  .footer{padding:40px 24px;flex-direction:column;gap:10px;text-align:center}
+  .hero p{font-size:18px}
+}
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="logo">Horaizon Tech</div>
+  <a href="https://cal.com/8bitahmed/ai-strategy-call" class="nav-cta">Book Free Strategy Call</a>
+</nav>
+
+<section class="hero">
+  <h1>Automate Your Business with <span>AI</span> — While You Sleep</h1>
+  <p>We build AI systems that handle your leads, bookings, content, and follow-ups automatically. You focus on growth.</p>
+  <a href="https://cal.com/8bitahmed/ai-strategy-call" class="cta-btn">Book Free 20-Min Call</a>
+  <a href="https://demo.YOURDOMAIN.COM" class="cta-secondary">See Live Demo</a>
+</section>
+
+<section class="services">
+  <h2>What We Build For You</h2>
+  <div class="service-grid">
+    <div class="service-card">
+      <h3>🤖 AI Chatbot & WhatsApp</h3>
+      <p>24/7 AI assistant that handles customer FAQs, books appointments, and captures leads — even at midnight.</p>
+      <div class="price">₹25,000+</div>
+    </div>
+    <div class="service-card">
+      <h3>📱 AI Content Engine</h3>
+      <p>30 posts/month across LinkedIn, Instagram, and Twitter — generated by AI, approved by you in minutes.</p>
+      <div class="price">₹50,000+</div>
+    </div>
+    <div class="service-card">
+      <h3>⚙️ Full AI Workflow</h3>
+      <p>End-to-end automation: lead capture → follow-up → proposal → invoice. Your entire sales process, automated.</p>
+      <div class="price">₹1,00,000+</div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <h2>Businesses We Help</h2>
+  <p>Clinics & Healthcare • Real Estate Agencies • D2C Brands • Coaching & Education • Restaurants • SaaS Companies</p>
+  <a href="https://cal.com/8bitahmed/ai-strategy-call" class="cta-btn">Get Your Free AI Audit →</a>
+</section>
+
+<section class="book">
+  <h2>Ready to Save 20+ Hours/Month?</h2>
+  <p>Book a free 20-minute strategy call. We'll show you exactly where AI can save your team time and money.</p>
+  <a href="https://cal.com/8bitahmed/ai-strategy-call" class="cta-btn">Book Free Strategy Call</a>
+</section>
+
+<footer class="footer">
+  <span>© 2026 Horaizon Tech</span>
+  <span>hello@horaizontech.xyz • +91-970-76-487-83</span>
+</footer>
+
+<script>
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+    }
+  });
+},{threshold:0.15});
+
+document.querySelectorAll("section").forEach(section=>{
+  observer.observe(section);
+});
+</script>
+
+</body>
+</html>
